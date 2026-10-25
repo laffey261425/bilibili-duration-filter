@@ -1,0 +1,46 @@
+{
+    "manifest_version":  3,
+    "name":  "B站视频时长分类与过滤",
+    "version":  "1.5.2",
+    "description":  "在B站网页版(首页/分区/搜索/UP主页)按视频时长分类(短/中/长),可过滤低于设定时长的视频,支持手动开关、自定义阈值与占位图。",
+    "permissions":  [
+                        "storage",
+                        "unlimitedStorage"
+                    ],
+    "content_scripts":  [
+                            {
+                                "matches":  [
+                                                "*://*.bilibili.com/*"
+                                            ],
+                                "js":  [
+                                           "content.js"
+                                       ],
+                                "run_at":  "document_idle"
+                            }
+                        ],
+    "web_accessible_resources":  [
+                                     {
+                                         "resources":  [
+                                                           "placeholder.jpg",
+                                                           "pet.png"
+                                                       ],
+                                         "matches":  [
+                                                         "*://*.bilibili.com/*"
+                                                     ]
+                                     }
+                                 ],
+    "action":  {
+                   "default_title":  "B站视频时长分类与过滤",
+                   "default_popup":  "popup.html",
+                   "default_icon":  {
+                                        "16":  "icons/icon16.png",
+                                        "48":  "icons/icon48.png",
+                                        "128":  "icons/icon128.png"
+                                    }
+               },
+    "icons":  {
+                  "16":  "icons/icon16.png",
+                  "48":  "icons/icon48.png",
+                  "128":  "icons/icon128.png"
+              }
+}

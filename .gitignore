@@ -1,0 +1,12 @@
+# 打包私钥,绝不能进仓库
+*.pem
+*.crx
+
+# 构建产物
+dist/
+*.zip
+
+# 系统杂物
+Thumbs.db
+.DS_Store
+desktop.ini
