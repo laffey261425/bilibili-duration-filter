@@ -15,6 +15,7 @@
     showPlaceholder: true, // 过滤时显示占位图
     showTitle: true,      // 占位卡显示视频名称
     clickUnhide: true,    // 点击占位卡解除隐藏
+    showPet: true,        // 显示右下角桌宠挂件
     shortPhotos: [],      // 短视频遮挡照片组(轮换)
     midPhotos: [],        // 中视频遮挡照片组(轮换)
     livePhotos: [],       // 直播遮挡照片组(轮换)
@@ -365,10 +366,12 @@
       '<label><input type="checkbox" id="bili-dur-cb-live"> 过滤直播</label>',
       '<label><input type="checkbox" id="bili-dur-cb-title"> 显示视频名称</label>',
       '<label><input type="checkbox" id="bili-dur-cb-ph"> 显示占位图</label>',
+      '<label><input type="checkbox" id="bili-dur-cb-pet"> 显示桌宠挂件</label>',
       '<div class="bili-dur-row"><span class="bili-dur-lbl">短视频上限</span><input type="range" id="bili-dur-range-short" min="30" max="300" step="30"><input type="number" id="bili-dur-in-short-min" class="bili-dur-num" min="0"><input type="number" id="bili-dur-in-short-sec" class="bili-dur-num" min="0" max="59" style="display:none;"></div>',
       '<div class="bili-dur-row"><span class="bili-dur-lbl">中视频上限</span><input type="range" id="bili-dur-range-mid" min="360" max="1800" step="30"><input type="number" id="bili-dur-in-mid-min" class="bili-dur-num" min="0"><input type="number" id="bili-dur-in-mid-sec" class="bili-dur-num" min="0" max="59" style="display:none;"></div>',
       '<div class="bili-dur-hint" id="bili-dur-range-hint"></div>',
-      '<div class="bili-dur-hint">照片组、单位等详细设置请点浏览器工具栏的「时」图标</div>'
+      '<div class="bili-dur-hint">照片组、单位等详细设置请点浏览器工具栏的「时」图标</div>',
+      '<div class="bili-dur-hint">关掉桌宠挂件后面板会一起收起，想找回来点工具栏图标，在弹窗里重新勾上。</div>'
     ].join('');
 
     panel.querySelector('.bili-dur-close').addEventListener('click', function () {
@@ -446,6 +449,9 @@
     });
     panel.querySelector('#bili-dur-cb-ph').addEventListener('change', function () {
       saveSetting('showPlaceholder', this.checked);
+    });
+    panel.querySelector('#bili-dur-cb-pet').addEventListener('change', function () {
+      saveSetting('showPet', this.checked);
     });
   }
 
@@ -540,13 +546,21 @@
     document.getElementById('bili-dur-cb-live').checked = config.filterLive;
     document.getElementById('bili-dur-cb-title').checked = config.showTitle;
     document.getElementById('bili-dur-cb-ph').checked = config.showPlaceholder;
+    document.getElementById('bili-dur-cb-pet').checked = config.showPet;
     renderQuickTime();
   }
 
   /* ============ 配置加载与同步 ============ */
+  function applyPetVisible() {
+    if (!petWrap) return;
+    petWrap.style.display = config.showPet ? '' : 'none';
+    if (!config.showPet && panel) panel.classList.remove('open');
+  }
+
   function applyConfig() {
     if (!panel) buildUI();
     syncPanelControls();
+    applyPetVisible();
     if (config.togglePos && config.togglePos.left && petWrap) {
       petWrap.style.right = 'auto';
       petWrap.style.bottom = 'auto';

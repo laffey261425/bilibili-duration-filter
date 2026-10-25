@@ -11,6 +11,7 @@ const DEFAULTS = {
   showPlaceholder: true,
   showTitle: true,
   clickUnhide: true,
+  showPet: true,
   shortPhotos: [],
   midPhotos: [],
   livePhotos: []
@@ -213,6 +214,7 @@ function applyUI() {
   $('cb-ph').checked = cfg.showPlaceholder;
   $('cb-title').checked = cfg.showTitle;
   $('cb-unhide').checked = cfg.clickUnhide;
+  $('cb-pet').checked = cfg.showPet;
   $('unit-min').checked = cfg.unit !== 's';
   $('unit-s').checked = cfg.unit === 's';
   $('range-short').value = Math.min(Math.max(Math.round(cfg.shortMax * 60), 30), 300);
@@ -232,6 +234,7 @@ $('cb-badge').addEventListener('change', function () { save('showBadge', this.ch
 $('cb-ph').addEventListener('change', function () { save('showPlaceholder', this.checked); });
 $('cb-title').addEventListener('change', function () { save('showTitle', this.checked); });
 $('cb-unhide').addEventListener('change', function () { save('clickUnhide', this.checked); });
+$('cb-pet').addEventListener('change', function () { save('showPet', this.checked); });
 
 $('unit-min').addEventListener('change', function () { if (this.checked) save('unit', 'min'); });
 $('unit-s').addEventListener('change', function () { if (this.checked) save('unit', 's'); });
