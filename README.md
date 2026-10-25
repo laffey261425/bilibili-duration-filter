@@ -158,13 +158,15 @@ msedge.exe --remote-debugging-port=9225 \
 
 ## 打包发布
 
+商店只接受 zip，且 zip 根目录必须直接是 `manifest.json`（不能套一层文件夹）。
+
 ```bash
-cd B站时长过滤扩展
-zip -r ../dist/bilibili-duration-filter-1.5.2.zip . \
-  -x "*.pem" -x "*.crx" -x "*.md"
+python tools/pack.py
 ```
 
-zip 根目录要直接是 `manifest.json`，不能套一层文件夹。`*.pem`（打包私钥）绝对不要提交到仓库，`.gitignore` 已经排掉了。
+脚本会读 `manifest.json` 里的版本号自动命名，输出 `dist/bilibili-duration-filter-<version>.zip`，同时排掉 `.pem` / `.crx` / `.md`，打完自己检查一遍顶层文件列表并确认 `manifest.json` 在根。
+
+`*.pem`（打包私钥）绝对不要提交到仓库，`.gitignore` 已经排掉了。
 
 ## 更新日志
 
