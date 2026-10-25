@@ -6,7 +6,11 @@
 
 > 当前版本 **1.5.3**　|　Manifest V3　|　仅需 `storage` 权限　|　不联网、不采集任何数据
 
-![首页效果](docs/screenshots/01-home-filtered.png)
+![首页效果](docs/screenshots/01-store-home.png)
+
+搜索页效果（10 张带标签、7 张被遮挡）：
+
+![搜索页效果](docs/screenshots/02-store-search.png)
 
 ---
 
