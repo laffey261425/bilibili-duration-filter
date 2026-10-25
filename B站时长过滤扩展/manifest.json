@@ -1,7 +1,7 @@
 {
     "manifest_version":  3,
     "name":  "B站视频时长分类与过滤",
-    "version":  "1.5.3",
+    "version":  "1.5.4",
     "description":  "在B站网页版(首页/分区/搜索/UP主页)按视频时长分类(短/中/长),可过滤低于设定时长的视频,支持手动开关、自定义阈值与占位图。",
     "permissions":  [
                         "storage",

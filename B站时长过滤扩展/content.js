@@ -269,10 +269,15 @@
     .bili-dur-mid { box-shadow: inset 0 0 0 2px rgba(14, 165, 233, 0.6); }
     .bili-dur-long { box-shadow: inset 0 0 0 2px rgba(34, 197, 94, 0.6); }
     .bili-dur-live { box-shadow: inset 0 0 0 2px rgba(255, 170, 0, 0.6); }
-    .bili-dur-short [data-bili-dur-marked] { color: #f43f5e; }
-    .bili-dur-mid [data-bili-dur-marked] { color: #0ea5e9; }
-    .bili-dur-long [data-bili-dur-marked] { color: #22c55e; }
-    [data-bili-dur-marked] { font-weight: 600; }
+    [data-bili-dur-marked] {
+      display: inline-block; font-weight: 700; letter-spacing: 0.2px;
+      padding: 1px 6px; border-radius: 4px; line-height: 1.4;
+      color: #fff; background: rgba(0,0,0,0.62);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    }
+    .bili-dur-short [data-bili-dur-marked] { color: #fff; background: #f43f5e; }
+    .bili-dur-mid [data-bili-dur-marked] { color: #fff; background: #0ea5e9; }
+    .bili-dur-long [data-bili-dur-marked] { color: #fff; background: #22c55e; }
     .bili-dur-filtered { position: relative !important; overflow: hidden; }
     .bili-dur-filtered > *:not(.bili-dur-ph-tag) { opacity: 0; }
     .bili-dur-filtered::after {
